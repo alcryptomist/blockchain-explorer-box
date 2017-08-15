@@ -1,0 +1,4 @@
+#!/bin/bash
+vagrant up
+open http://192.168.1.12:3000/blockchain/1HE4ShfmuG7AdVr5RpaCtXfsJYYQQFCj1T/transactions
+open http://192.168.1.12:3000/blockchain/1HE4ShfmuG7AdVr5RpaCtXfsJYYQQFCj1T/balance

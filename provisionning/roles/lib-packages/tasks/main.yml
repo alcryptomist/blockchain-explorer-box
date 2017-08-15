@@ -1,0 +1,37 @@
+- name: install needed dependency
+  apt: name={{ item }}
+  with_items:
+    - git
+    - curl
+    - build-essential
+    - libssl-dev
+
+- name: install node 6
+  shell: curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+
+- name: install node js
+  apt:
+    name: nodejs
+    state: present
+    update_cache: yes
+
+
+- name: install pm2
+  npm:
+    name: pm2
+    global: yes
+
+- name: install gulp
+  npm:
+    name: gulp
+    global: yes
+
+- name: install babel
+  npm:
+    name: babel
+    global: yes
+
+- user:
+    name: appManager
+    shell: /bin/bash
+    groups: admin

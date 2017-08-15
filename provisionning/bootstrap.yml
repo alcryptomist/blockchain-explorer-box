@@ -1,0 +1,12 @@
+- hosts: blockchainapi
+  gather_facts: False
+  pre_tasks:
+    - name: Install python for Ansible
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      changed_when: False
+      become: yes 
+    - setup: # aka gather_facts
+      become: yes 
+  roles:
+      - { role: lib-packages, become: yes }
+      - { role: blockchain-explorer , become: yes, become_user: appManager}

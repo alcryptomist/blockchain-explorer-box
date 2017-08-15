@@ -1,0 +1,22 @@
+- name: get blockchain-explorer project from github
+  git:
+    repo: https://github.com/alcryptomist/blockchain-explorer.git
+    dest: "{{ codeSourcePath }}"
+    version: "{{ branch }}"
+    force: yes
+
+- name: Install packages based on package.json
+  npm:
+    path: "{{ codeSourcePath }}"
+    production: no
+
+# setup conf file
+- name: replace app.conf.js
+  template:
+    src: app.conf.js
+    dest: "{{ codeSourcePath }}/src/config/app.conf.js"
+  
+- name: Run Script
+  command: npm start
+  args:
+    chdir: "{{ codeSourcePath }}"
