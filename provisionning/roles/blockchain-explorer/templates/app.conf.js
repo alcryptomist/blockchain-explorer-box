@@ -1,3 +1,3 @@
-export const loggerLevel = '{loglevel}';
+export const loggerLevel = '{{loglevel}}';
 
-export const serverPort = {port};
+export const serverPort = {{port}};
